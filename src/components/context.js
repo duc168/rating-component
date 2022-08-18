@@ -24,19 +24,21 @@ const useRating = (props) => {
     }
 
     const increaseRating = () => {
+        const currentValue = value ?? 0;
         if (mode === HALF_MODE) {
-            updateValue(value + 0.5);
+            updateValue(currentValue + 0.5);
             return;
         }
-        updateValue(value + 1);
+        updateValue(currentValue + 1);
     }
 
     const decreaseRating = () => {
+        const currentValue = value ?? 0;
         if (mode === HALF_MODE) {
-            updateValue(value - 0.5);
+            updateValue(currentValue - 0.5);
             return;
         }
-        updateValue(value - 1);
+        updateValue(currentValue - 1);
     }
 
     const updateHoveredIndex = (newIndex) => {

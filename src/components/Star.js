@@ -74,16 +74,30 @@ const Star = ({ order }) => {
 
     }
     const mouseClickHandler = (event) => {
-        if (Math.ceil(value) === order) {
-            updateValue(0);
-            return;
-        }
         if (mode === HALF_MODE) {
             const isHalf = isLessThanHalf(event);
             if (isHalf) {
+                const isSameValue = value === order - 0.5;
+                if (isSameValue === true) {
+                    updateValue(0);
+                    return;
+                }
                 updateValue(order - 0.5);
                 return;
+            } else {
+                const isSameValue = value === order;
+                if (isSameValue === true) {
+                    updateValue(0);
+                    return;
+                } else {
+                    updateValue(order);
+                    return;
+                }
             }
+        }
+        if (Math.ceil(value) === order) {
+            updateValue(0);
+            return;
         }
         updateValue(order)
     }

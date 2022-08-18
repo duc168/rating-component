@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DEFAULT_STARS } from './constants';
 import { useRatingContext } from './context';
 import Star from './Star';
-const Stars = () => {
+const Stars = ({ defaultValue }) => {
     const { increaseRating, decreaseRating, updateValue } = useRatingContext();
     const keyHandler = (event) => {
         const LEFT_ARROW_CODE = 37;
@@ -33,6 +33,11 @@ const Stars = () => {
         }
 
     }
+
+    useEffect(() => {
+        updateValue(defaultValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [defaultValue]);
 
     return <div
         tabIndex="0"

@@ -4,9 +4,10 @@ import './Rating.css';
 import { RatingProvider } from './context';
 
 const Rating = (props) => {
+    const { value } = props;
     return (
         <RatingProvider {...props}>
-            <Stars />
+            <Stars defaultValue={value} />
         </RatingProvider>
     )
 };
