@@ -1,0 +1,19 @@
+name: Test and deploy the Rating Component
+
+on:
+  push:
+
+jobs:
+  testingJob:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14.18.0]
+    uses: duc168/workflows/.github/workflows/ssh-deploy.yml@master
+    with:
+      os: ubuntu-latest
+      node: 14.18.0
+      ssh_path: git@github.com:duc168/rating-component.git
+      user_email: victor.tran.august@gmail.com
+    secrets:
+      my_deploy_key: ${{ secrets.PRIVATE_DEPLOY_KEY }}
