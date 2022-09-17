@@ -17,8 +17,9 @@
     "pretest": "npm install",
     "start": "cross-env HOST=0.0.0.0 PORT=8000 ./node_modules/.bin/react-scripts start",
     "test": "cross-env CI=true ./node_modules/.bin/react-scripts test --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit",
-    "postbuild": "mv build dist",
-    "build": "./node_modules/.bin/react-scripts build"
+    "build": "cross-env PUBLIC_URL=/rating-component ./node_modules/.bin/react-scripts build",
+    "prebuild": "rm -rf ./dist &",
+    "postbuild": "mv build dist"
   },
   "devDependencies": {
     "chai": "^4.2.0",
